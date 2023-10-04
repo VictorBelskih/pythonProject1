@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -94,8 +95,8 @@ DATABASES = {
         "HOST": "127.0.0.1",
     }
 }
-database_url = os.getenv('DATABASE_URL')
-DATABASES["default"] = dj_database_url.parse(database_url)
+#database_url = os.getenv('DATABASE_URL')
+#DATABASES["default"] = dj_database_url.parse(database_url)
 
 
 
@@ -135,11 +136,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATICFILES_DIRS = [
-    BASE_DIR / "static/",
+    os.path.join(BASE_DIR, "static")
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
