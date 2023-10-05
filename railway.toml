@@ -1,5 +1,5 @@
 [build]
-builder = "Docker"
+builder = "DOCKERFILE"
 buildCommand = "echo building!"
 
 [deploy]
