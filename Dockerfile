@@ -16,7 +16,7 @@ WORKDIR /AgroChemicalService
 
 COPY . /AgroChemicalService/
 
-
+RUN pip install GDAL-3.4.3-cp311-cp311-win_amd64.whl
 
 COPY requirements.txt .
 COPY requirements.txt /tmp/requirements.txt
