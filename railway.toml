@@ -1,5 +1,5 @@
 [build]
-builder = "NIXPACKS"
+builder = "DOCKERFILE"
 buildCommand = "echo building!"
 
 [deploy]
