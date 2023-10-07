@@ -22,7 +22,8 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so'
+GEOS_LIBRARY_PATH = '/usr/lib/libgeos_c.so'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/

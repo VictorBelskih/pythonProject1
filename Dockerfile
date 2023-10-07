@@ -8,8 +8,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /AgroChemicalService
 
-GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so'
-GEOS_LIBRARY_PATH = '/usr/lib/libgeos_c.so'
+
 
 
 
