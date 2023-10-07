@@ -46,7 +46,7 @@
 
                 {% endfor %}
 
-        ]}
+       ]}
 
 var geojsonLayer = L.geoJSON(geojson, {
 
@@ -85,14 +85,34 @@ var geojsonLayer = L.geoJSON(geojson, {
       '<br>TLU: ' + feature.properties.tlu
       + '<br>Площадь: ' + feature.properties.area);
 
+    var selectedPolygon = null;
+    var originalStyle = null;
+
+    layer.on('click', function(e) {
+
+      if (e.target.options.weight === 2) {
+        // Снятие выделения с выбранного полигона
+        e.target.setStyle({ weight: 1, color:black});
+      } else {
+        // Снятие выделения с предыдущего выбранного полигона
+        geojsonLayer.eachLayer(function(layer) {
+          if (layer.options.weight === 2) {
+            layer.setStyle({ weight: 1, color: 'black' });
+          }
+        });
+
+        // Выделение текущего полигона
+        e.target.setStyle({ weight: 2, color: 'red' });
+      }
+
+        var id_g = feature.properties.id_0;
+        console.log('ID value:', id_g);
+        });
+      }
+    }).addTo(map);
 
 
-    layer.on('click', function() {
-      id_g = feature.properties.area;
-      console.log('Area value:', id_g); // Output the value to the console for testing
-    });}}).addTo(map);
-
-       var overlayMaps = {
+    var overlayMaps = {
     "Google": googleLayer,
     "OpenStreetMap": openStreetMapLayer,
     "GeoJSON": geojsonLayer
@@ -100,6 +120,13 @@ var geojsonLayer = L.geoJSON(geojson, {
 
 L.control.layers(null, overlayMaps).addTo(map);
 
+map.on('click', function(e) {
+  geojsonLayer.eachLayer(function(layer) {
+    if (layer.options.weight === 2 && layer.options.color === 'red') {
+      layer.setStyle({ weight: 1, color: 'black' });
+    }
+  });
+});
 
 
 
