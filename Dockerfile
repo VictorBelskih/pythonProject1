@@ -6,20 +6,14 @@ ENV PYTHONUNBUFFERED=1
 
 
 
-WORKDIR /AgroChemicalService
+WORKDIR /app
 
-
-
-
-
-
-
-COPY . /AgroChemicalService/
+COPY . /app/
 
 
 
 COPY requirements.txt .
-COPY requirements.txt /tmp/requirements.txt
+
 
 RUN pip install -r requirements.txt
 
